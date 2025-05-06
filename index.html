@@ -142,6 +142,9 @@
                     <input type="hidden" name="_subject" value="Nova mensagem do Portfólio!">
                     <div class="btn-enviar"><input type="submit" value="Enviar"></div>
                 </form>
+
+                <div id="mensagem-status" style="display: none;">Mensagem enviada com sucesso!</div>
+                
             </div><!--formulario-->
         </section><!--interface-->
     </main>
@@ -154,5 +157,29 @@
             </div><!--line-footer-->
         </div><!--interface-->
     </footer>
+    <script>
+        document.getElementById('contato').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch("https://formsubmit.co/gcovre.magalhaes@gmail.com", {
+                    method: "POST",
+                    body: formData
+                });
+
+                if (response.ok) {
+                    document.getElementById('mensagem-status').style.display = 'block';
+                    form.reset();
+                } else {
+                    alert('Erro ao enviar. Tente novamente.');
+                }
+            } catch (error) {
+                alert('Erro de rede. Verifique sua conexão.');
+            }
+        });
+    </script>
 </body>
 </html>
