@@ -55,6 +55,10 @@ html {
     scroll-padding-top: 50px;
 }
 
+.img-topo-site img,.img-sobre img {
+    border-radius: 15px;
+}
+
 /* Estilo Header */
 header{
     padding: 40px 4%;
